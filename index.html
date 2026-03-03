@@ -163,6 +163,18 @@
                     type="video/mp4">
           </video>
         </div>
+        <div class="item item-aman-writing">
+          <video poster="" id="aman-writing" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/my_videos/aman_writing.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-sofa">
+          <video poster="" id="sofa" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/my_videos/sofa.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
 
       </div>
     </div>
@@ -221,10 +233,8 @@
             We compare with state-of-the-art (SOTA) video amodal completion method. 
           </p>
 
-          <video id="tao_amodal" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/tao_amodal.mp4"
-                    type="video/mp4">
-          </video>
+          <img src="./static/my_videos/clip_6Q1IC9r7_wBBJBori_000_grid_vis24.65pct.gif" width="100%" alt="Comparison on LAVAT-S">
+          <img src="./static/my_videos/clip_milYsVVM_BUFXm7zN_000_grid_vis18.30pct.gif" width="100%" alt="Comparison on LAVAT-S" style="margin-top: 15px;">
 
         </div>
       </div>
@@ -288,14 +298,20 @@
             <i>Video Amodal Texture Completion Stage</i>: The second stage conducts amodal texture completion with text guidance as semantic priors, leveraging pretrained diffusion models 
             to reconstruct accurate content based on canonical object shapes and properties.
           </p>
-            <img id="method"
-                src="./static/my_images/stage1_pipeline.png"
-                height="100%"
-                alt="Method image">
-            <img id="method"
-                src="./static/my_images/stage2_pipeline.png"
-                height="100%"
-                alt="Method image">
+            <figure style="margin-bottom: 1.5rem;">
+              <img id="method"
+                  src="./static/my_images/stage1_pipeline.png"
+                  height="100%"
+                  alt="Stage 1 pipeline">
+              <figcaption style="text-align: center; margin-top: 0.5rem; font-style: italic;">Stage 1: Amodal Mask Segmentation with Optical Flow Guidance</figcaption>
+            </figure>
+            <figure>
+              <img id="method"
+                  src="./static/my_images/stage2_pipeline.png"
+                  height="100%"
+                  alt="Stage 2 pipeline">
+              <figcaption style="text-align: center; margin-top: 0.5rem; font-style: italic;">Stage 2: Video Amodal Texture Completion with Text Guidance</figcaption>
+            </figure>
         </div>
       </div>
       <!--/ How does it work?. -->
