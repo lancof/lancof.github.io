@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="We tackle the problem of video amodal segmentation and content completion using diffusion priors.">
+  <meta name="keywords" content="video amodal segmentation, video diffusion, amodal segmentation, content completion">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Open-Vocab Video Amodal Completion via Diffusion Models with Text and Optical Flow Guidance</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/diffvasicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Open-Vocab Video Amodal Completion via Diffusion Models with Text and Optical Flow Guidance</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Anonymous Authors</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Anonymous Institution</span>
+          </div>
+
+          <strong class="is-size-5" style="color:#d7191c;">Under Review</strong>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+              <!-- <span class="link-block">
+                <a href="./page1/index.html"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-video"></i>
+                  </span>
+                  <span>Figures (Video)</span>
+                </a>
+              </span> -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/my_videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle">
+        In this work, we tackle the problem of open vocab video amodal segmentation and content completion: given an input video and a text prompt, 
+        we develop a two-stage method that generates its amodal (visible + invisible) masks and RGB content.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<div class="columns is-centered has-text-centered">
+<h2 class="title is-3">In-the-wild Gallery</h2>
+</div>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-horse">
+          <video poster="" id="horse" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/my_videos/0b02886a.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-horse">
+          <video poster="" id="horse" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/my_videos/1d29944c.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-horse">
+          <video poster="" id="horse" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/my_videos/06eb2803.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-horse">
+          <video poster="" id="horse" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/my_videos/03a50095.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-bird">
+          <video poster="" id="bird" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/bird.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-soccer">
+          <video poster="" id="soccer" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/soccer.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-trump">
+          <video poster="" id="trump" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/trump.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        
+        <div class="item item-weird">
+          <video poster="" id="weird" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/weird.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item item-bottle">
+          <video poster="" id="bottle" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/bottle.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item item-tourist">
+          <video poster="" id="tourist" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/tourist.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item item-chef">
+          <video poster="" id="chef" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/chef.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item item-giraffe">
+          <video poster="" id="giraffe" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/giraffe.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Amodal perception enables humans to perceive entire objects even when parts are occluded, a remarkable cognitive skill that artificial intelligence struggles to replicate. 
+            Substantial advancements have been made in image amodal completion and currently being advanced in video domain amodal completion thank to the rapid grow of diffusion models for visual synthesis.
+            While recent advances in video amodal completion show promise, existing approaches suffer from two critical limitations: insufficient auxiliary information to guide recovery of heavily occluded content, and inability to handle videos of arbitrary length. 
+            We present LANCOF (Length-Agnostic Video Amodal Completion via Diffusion Model with Text and Optical Flow Guidance), 
+            which addresses these limitations through complementary prior knowledge. Our approach uses optical flow as motion priors for consistent mask completion and text guidance as semantic priors for accurate content reconstruction. A zero-shot generation pipeline with Temporal Generation module and anchor-frame attention enables truly length-agnostic processing without duration-specific training.
+            We also contribute LAVAT, a comprehensive dataset with long video sequences and text descriptions as prior knowledge for heavy occlusion cases. Extensive experiments show \model achieves state-of-the-art performance on existing benchmarks while demonstrating superior generalization to longer sequences, advancing both training capabilities and evaluation standards for video amodal completion. 
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/" 
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+
+<section class="section">
+
+  <div class="container is-max-desktop"  style="margin-bottom: 30px;">
+
+    <div class="columns is-centered">
+
+      <!-- Comparison on TAO-Amodal. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Comparison with SOTA on LAVAT-S</h2>
+          <p>
+            We compare with state-of-the-art (SOTA) video amodal completion method. 
+          </p>
+
+          <video id="tao_amodal" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/tao_amodal.mp4"
+                    type="video/mp4">
+          </video>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Comparison on MOVi-B/D. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Comparison on Kubric OvO</h2>
+          <p>
+            We also benchmark our method on Kubric dataset
+          </p>
+          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/movi.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+    <!--/ Pseudo-gt. -->
+
+
+    <!-- Concurrent Work. -->
+
+    <!-- <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          Coming soon!
+        </div>
+      </div>
+    </div> -->
+
+    <!--/ Concurrent Work. -->
+
+
+
+<section class="section">
+
+
+  <div class="container is-max-desktop">
+      <!-- How does it work?. -->
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">How does it work?</h2>
+          <p>
+            We first use SAM3 to localize and track the object of interest's visible mask. Then, the model
+            perform in two-stage prediction. <i>Amodal Mask Segmentation Stage</i>: The model uses optical flow as motion priors to infer occluded regions through motion consistency.
+            <i>Video Amodal Texture Completion Stage</i>: The second stage conducts amodal texture completion with text guidance as semantic priors, leveraging pretrained diffusion models 
+            to reconstruct accurate content based on canonical object shapes and properties.
+          </p>
+            <img id="method"
+                src="./static/my_images/stage1_pipeline.png"
+                height="100%"
+                alt="Method image">
+            <img id="method"
+                src="./static/my_images/stage2_pipeline.png"
+                height="100%"
+                alt="Method image">
+        </div>
+      </div>
+      <!--/ How does it work?. -->
+    </div>
+
+  </div>
+
+
+</section>
+
+  
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{anonymous2026lancof,
+  title={Open-Vocab Video Amodal Completion via Diffusion Models with Text and Optical Flow Guidance},
+  author={Anonymous},
+  booktitle={Under Review},
+  year={2026}
+}</code></pre>
+  </div>
+</section:>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content" style="text-align: center;">
+          <p>
+            This website is borrowed from <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. We sincerely thank them for this excellent open-source template!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
