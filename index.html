@@ -108,7 +108,7 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/my_videos/teaser.mp4"
+        <source src="./static/my_videos/itw/teaser.mp4"
                 type="video/mp4">
       </video>
       <h2 class="subtitle">
@@ -129,49 +129,43 @@
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item item-horse">
           <video poster="" id="horse" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/my_videos/0b02886a.mp4"
+            <source src="./static/my_videos/itw/0b02886a.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-horse">
           <video poster="" id="horse" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/my_videos/1d29944c.mp4"
+            <source src="./static/my_videos/itw/1d29944c.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-horse">
           <video poster="" id="horse" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/my_videos/06eb2803.mp4"
+            <source src="./static/my_videos/itw/06eb2803.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-horse">
           <video poster="" id="horse" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/my_videos/03a50095.mp4"
+            <source src="./static/my_videos/itw/03a50095.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-bird">
           <video poster="" id="bird" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/my_videos/chicken.mp4"
+            <source src="./static/my_videos/itw/chicken.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-soccer">
           <video poster="" id="soccer" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/my_videos/yellow_notebook.mp4"
+            <source src="./static/my_videos/itw/yellow_notebook.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-aman-writing">
           <video poster="" id="aman-writing" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/my_videos/aman_writing.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-sofa">
-          <video poster="" id="sofa" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/my_videos/sofa.mp4"
+            <source src="./static/my_videos/itw/aman_writing.mp4"
                     type="video/mp4">
           </video>
         </div>
@@ -221,6 +215,41 @@
 
 <section class="section">
 
+
+  <div class="container is-max-desktop">
+      <!-- How does it work?. -->
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">How does it work?</h2>
+          <p>
+            We first use SAM3 to localize and track the object of interest's visible mask. Then, the model
+            perform in two-stage prediction. <i>Amodal Mask Segmentation Stage</i>: The model uses optical flow as motion priors to infer occluded regions through motion consistency.
+            <i>Video Amodal Texture Completion Stage</i>: The second stage conducts amodal texture completion with text guidance as semantic priors, leveraging pretrained diffusion models
+            to reconstruct accurate content based on canonical object shapes and properties.
+          </p>
+            <figure style="margin-bottom: 1.5rem;">
+              <img id="method"
+                  src="./static/my_images/stage1_pipeline.png"
+                  height="100%"
+                  alt="Stage 1 pipeline">
+              <figcaption style="text-align: center; margin-top: 0.5rem; font-style: italic;">Stage 1: Amodal Mask Segmentation with Optical Flow Guidance</figcaption>
+            </figure>
+            <figure>
+              <img id="method"
+                  src="./static/my_images/stage2_pipeline.png"
+                  height="100%"
+                  alt="Stage 2 pipeline">
+              <figcaption style="text-align: center; margin-top: 0.5rem; font-style: italic;">Stage 2: Video Amodal Texture Completion with Text Guidance</figcaption>
+            </figure>
+        </div>
+      </div>
+      <!--/ How does it work?. -->
+    </div>
+
+  </div>
+
+
   <div class="container is-max-desktop"  style="margin-bottom: 30px;">
 
     <div class="columns is-centered">
@@ -233,8 +262,8 @@
             We compare with state-of-the-art (SOTA) video amodal completion method. 
           </p>
 
-          <img src="./static/my_videos/clip_6Q1IC9r7_wBBJBori_000_grid_vis24.65pct.gif" width="100%" alt="Comparison on LAVAT-S">
-          <img src="./static/my_videos/clip_milYsVVM_BUFXm7zN_000_grid_vis18.30pct.gif" width="100%" alt="Comparison on LAVAT-S" style="margin-top: 15px;">
+          <img src="./static/my_videos/compare_sota/clip_6Q1IC9r7_wBBJBori_000_grid_vis24.65pct.gif" width="100%" alt="Comparison on LAVAT-S">
+          <img src="./static/my_videos/compare_sota/clip_milYsVVM_BUFXm7zN_000_grid_vis18.30pct.gif" width="100%" alt="Comparison on LAVAT-S" style="margin-top: 15px;">
 
         </div>
       </div>
@@ -283,44 +312,6 @@
 
 
 
-<section class="section">
-
-
-  <div class="container is-max-desktop">
-      <!-- How does it work?. -->
-    <div class="columns is-centered">
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-3">How does it work?</h2>
-          <p>
-            We first use SAM3 to localize and track the object of interest's visible mask. Then, the model
-            perform in two-stage prediction. <i>Amodal Mask Segmentation Stage</i>: The model uses optical flow as motion priors to infer occluded regions through motion consistency.
-            <i>Video Amodal Texture Completion Stage</i>: The second stage conducts amodal texture completion with text guidance as semantic priors, leveraging pretrained diffusion models 
-            to reconstruct accurate content based on canonical object shapes and properties.
-          </p>
-            <figure style="margin-bottom: 1.5rem;">
-              <img id="method"
-                  src="./static/my_images/stage1_pipeline.png"
-                  height="100%"
-                  alt="Stage 1 pipeline">
-              <figcaption style="text-align: center; margin-top: 0.5rem; font-style: italic;">Stage 1: Amodal Mask Segmentation with Optical Flow Guidance</figcaption>
-            </figure>
-            <figure>
-              <img id="method"
-                  src="./static/my_images/stage2_pipeline.png"
-                  height="100%"
-                  alt="Stage 2 pipeline">
-              <figcaption style="text-align: center; margin-top: 0.5rem; font-style: italic;">Stage 2: Video Amodal Texture Completion with Text Guidance</figcaption>
-            </figure>
-        </div>
-      </div>
-      <!--/ How does it work?. -->
-    </div>
-
-  </div>
-
-
-</section>
 
   
 
